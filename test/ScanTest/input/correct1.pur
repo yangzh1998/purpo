@@ -1,0 +1,19 @@
+import other as ot;
+
+num = 3;
+array = [1, 2, num]; # oh my god
+t = -1.5;
+
+func main() {
+  for (element in array) {
+    if (element >= 3 && array.len() != 4) {
+      array.append("a string");
+      break;
+    } else {
+      t /= 0.2;
+    }
+  }
+
+  other::condition = true;
+  return 0;
+}

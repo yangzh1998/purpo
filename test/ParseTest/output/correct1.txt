@@ -1,0 +1,117 @@
+<start>
+    <import>
+        <module> other hey std 
+        <alias> std
+    <gbl decl> num
+    <gbl decl> array
+    <import>
+        <module> hy q 
+        <alias> hy_q
+    <gbl decl> t
+    <func> Init
+        <params> 
+        <block>
+            <block>
+                <assign>
+                    <left>
+                        <var ref>
+                            num
+                    =
+                    <right>
+                        <I61 Lit> 1
+    <func> Foo
+        <params> a b c 
+        <block>
+            <for>
+                <params> i 
+                <iter>
+                    <var ref>
+                        a
+                <block>
+                    <assign>
+                        <left>
+                            <var ref>
+                                hhh
+                        =
+                        <right>
+                            <call>
+                                <fn ref>
+                                    Func
+                                <args>
+                                    <neg>
+                                        <range ref>
+                                            <var ref>
+                                                a
+                                            <I61 Lit> 3
+                                            <I61 Lit> 5
+                                    <call>
+                                        <fn ref>
+                                            std
+                                            print
+                                        <args>
+                                            <index ref>
+                                                <var ref>
+                                                    b
+                                                <Str Lit> h
+                                            <not>
+                                                <Binary> <
+                                                    <var ref>
+                                                        b
+                                                    <I61 Lit> 4
+                                            <range ref>
+                                                <index ref>
+                                                    <var ref>
+                                                        c
+                                                    <I61 Lit> 3
+                                                <I61 Lit> 3
+                                                <I61 Lit> 4
+                    <break>
+                    <skip>
+            <if>
+                <condition>
+                    <Binary> >=
+                        <var ref>
+                            b
+                        <var ref>
+                            c
+                <block>
+                    <call>
+                        <call>
+                            <fn ref>
+                                Foo
+                            <args>
+                                <index ref>
+                                    <var ref>
+                                        a
+                                    <I61 Lit> 2
+                                <Binary> -
+                                    <var ref>
+                                        b
+                                    <I61 Lit> 1
+                                <var ref>
+                                    c
+                                <map>
+                                    <pair>
+                                        <neg>
+                                            <I61 Lit> 1
+                                        <I61 Lit> 2
+                                    <pair>
+                                        <I61 Lit> 4
+                                        <arr>
+                                            <F61 Lit> 0.350000
+                                            <Str Lit> abc
+            <branch>
+                <block>
+                    <assign>
+                        <left>
+                            <var ref>
+                                num
+                        +=
+                        <right>
+                            <I61 Lit> 1
+            <return>
+                <Binary> +
+                    <I61 Lit> 4
+                    <Binary> *
+                        <I61 Lit> 5
+                        <I61 Lit> 6

@@ -1,0 +1,16 @@
+OVERVIEW: purpo compiler(purc)
+
+USAGE: purc [options] file
+
+DRIVER OPTIONS:
+  -h, --help
+    Display available options.
+
+  -o <file>
+    Write output to file.
+
+  -Werror
+    Treat all warnings as errors.
+
+  -w
+    Suppress all warnings.

@@ -1,0 +1,27 @@
+import other::hey::std as std; # oh my god
+
+num ;
+array;
+
+import hy::q
+as hy_q;
+t;
+
+func Init() {
+  {
+    num = 1;
+  }
+}
+
+func Foo(a, b, c) {
+  for (i in a) {
+    hhh = Func(-a[3:5], b["h"].std::print(!(b<4), c[3][3:4]));
+    break;;
+  }
+  if (b>=c) {
+    a[2].Foo(b-1, c, {-1:2, 4:[0.35,"abc"]});
+  } else {
+    num += 1;
+  }
+  return 4+5*6;
+}

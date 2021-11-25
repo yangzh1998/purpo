@@ -1,0 +1,62 @@
+Start: DeclList
+DeclList: Decl DeclList | <empty>
+Decl: ImportDecl | GlobalVarDecl | FuncDef
+
+ImportDecl: IMPORT IdentList AS IDENTIFIER ';'
+IdentList: IDENTIFIER DoubleColonIdentList
+DoubleColonIdentList: FIELD IDENTIFIER DoubleColonIdentList | <empty>
+
+GlobalVarDecl: IDENTIFIER ';'
+
+FuncDef: FUNC IDENTIFIER '(' ParamList ')' Block
+ParamList: IDENTIFIER CommaIdentifierList | <empty>
+CommaIdentifierList: ',' IDENTIFIER CommaIdentifierList | <empty>
+Block : '{' StmtList '}'
+StmtList: Stmt StmtList | <empty>
+Stmt: ForLoop | WhileLoop | IfStmt | BREAK ';' | CONTINUE ';'
+  | ReturnStmt | Block | ';' | ExeStmt
+
+ForLoop: FOR '(' ParamList IN Expr ')' Block
+WhileLoop: WHILE '(' Expr ')' Block
+IfStmt: IF '(' Expr ')' Block ElseClause
+ElseClause: ELSE Block | <empty>
+ReturnStmt: RETURN ExprOrNot ';'
+ExprOrNot: Expr | <empty>
+ExeStmt: Expr AssignOrNot ';' // Actually, only Call is allowed without Assign
+AssignOrNot: AssignOp Expr | /* empty */
+AssignOp: "+=" | "-=" | "*=" | "/=" | "%=" | "="
+ExprList: Expr CommaExprList | <empty>
+CommaExprList: ',' Expr CommaExprList | <empty>
+
+Expr: Expr1
+Expr1: Expr2 ExprT1
+ExprT1: OR Expr2 ExprT1 | <empty>
+Expr2: Expr3 ExprT2
+ExprT2: AND Expr3 ExprT2 | <empty>
+Expr3: Expr4 ExprT3
+ExprT3: Op3 Expr4 ExprT3 | <empty>
+Op3: "==" | "!="
+Expr4: Expr5 ExprT4
+ExprT4: Op4 Expr5 ExprT4 | <empty>
+Op4: "<=" | ">=" | '<' | '>'
+Expr5: Expr6 ExprT5
+ExprT5: Op5 Expr6 ExprT5 | <empty>
+Op5: '+' | '-'
+Expr6: Expr7 ExprT6
+ExprT6: Op6 Expr7 ExprT6 | <empty>
+Op6: '*' | '/' | '%'
+Expr7: Op7 Expr8 | Expr8
+Op7: '-' | '!'
+Expr8: Expr9 ExprT8
+ExprT8: '[' Expr ExprT8B | '.' IdentList '(' ExprList ')' ExprT8 | <empty>
+ExprT8B: ':' Expr ']' ExprT8 | ']' ExprT8
+Expr9: '(' Expr ')' | IdentList ArgumentsOrNot | JsonValue
+ArgumentsOrNot: '(' ExprList ')' | <empty>
+
+JsonValue: TRUE | FALSE | NULL | I61_CONST | F61_CONST | STR_CONST
+  | JsonArray | JsonObject
+JsonArray: '[' ExprList ']'
+JsonObject: '{' PairList '}'
+PairList: Pair CommaPairList | <empty>
+CommaPairList: ',' Pair CommaPairList | <empty>
+Pair: Expr ':' Expr
