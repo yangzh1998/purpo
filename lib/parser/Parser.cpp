@@ -544,7 +544,8 @@ std::unique_ptr<SemanticValue> Parser::ParsePair() {
   params[1] = ParseExpr();
   params[2] = MatchToken(':');
   params[3] = ParseExpr();
-  params[0]->mPair = new ast::Pair(params[1]->mExpr, params[3]->mExpr);
+  params[0]->mPair = new ast::Pair(std::unique_ptr<ast::Expr>(params[1]->mExpr),
+                                   std::unique_ptr<ast::Expr>(params[3]->mExpr));
   params[0]->mLocation = params[2]->mLocation;
   return std::unique_ptr<SemanticValue>(std::move(params[0]));
 }
