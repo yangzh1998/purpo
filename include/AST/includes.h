@@ -22,6 +22,7 @@
 #include "AST/CallStmt.h"
 #include "AST/Literal.h"
 #include "AST/NullExpr.h"
+#include "AST/Pair.h"
 #include "AST/ArrayValue.h"
 #include "AST/MapValue.h"
 #include "AST/Binary.h"

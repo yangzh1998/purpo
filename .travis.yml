@@ -15,6 +15,7 @@ jobs:
         homebrew:
           packages: ["llvm"]
       before_install:
+        - find /usr/local -name LLVMConfig.cmake
         - export LLVM_DIR="/usr/local/opt/llvm/lib/cmake/llvm"
 
 
