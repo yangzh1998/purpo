@@ -1,6 +1,7 @@
 ## Purpo
 
 [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/yangzh1998/purpo.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/yangzh1998/purpo/context:cpp)
+[![Build Status](https://app.travis-ci.com/yangzh1998/purpo.svg?branch=main)](https://app.travis-ci.com/yangzh1998/purpo)
 
 ---
 

@@ -1,0 +1,27 @@
+language: cpp
+
+jobs:
+  include:
+    - os: linux
+      compiler: clang
+      before_install:
+        - sudo apt-get install llvm-9
+        - export LLVM_DIR="/usr/lib/llvm-9/cmake"
+    - os: osx
+      compiler: clang
+      before_install:
+        - brew install llvm
+        - export LLVM_DIR="/usr/local/opt/llvm/lib/cmake/llvm"
+
+
+script:
+  - mkdir build && cd build
+  - cmake .. -DCMAKE_CXX_COMPILER="`which clang`" -DLLVM_DIR="${LLVM_DIR}"
+  - cmake --build . --config release
+
+env:
+  global:
+    - GH_REF: github.com/yangzh1998/purpo.git
+    - P_BRANCH: main
+    - U_NAME: yangzh1998
+    - U_EMAIL: yangzh1998@hotmail.com
