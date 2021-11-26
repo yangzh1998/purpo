@@ -4,13 +4,17 @@ jobs:
   include:
     - os: linux
       compiler: clang
+      addons:
+        apt:
+          packages: ["llvm-6"]
       before_install:
-        - sudo apt-get install llvm-9
-        - export LLVM_DIR="/usr/lib/llvm-9/cmake"
+        - export LLVM_DIR="/usr/lib/llvm-6/cmake"
     - os: osx
       compiler: clang
+      addons:
+        homebrew:
+          packages: ["llvm"]
       before_install:
-        - brew install llvm
         - export LLVM_DIR="/usr/local/opt/llvm/lib/cmake/llvm"
 
 
