@@ -7,10 +7,15 @@ jobs:
       addons:
         apt:
           packages:
-            - llvm-9
+            - llvm
     - os: osx
       osx_image: xcode11.1
       compiler: clang
+      addons:
+        homebrew:
+          packages:
+            - llvm
+          update: true
       before_install:
         - export LLVM_DIR="/usr/local/opt/llvm/lib/cmake/llvm"
 
