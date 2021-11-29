@@ -15,13 +15,12 @@ jobs:
         homebrew:
           packages:
             - llvm
-          update: true
       before_install:
-        - export LLVM_DIR="/usr/local/opt/llvm/lib/cmake/llvm"
+        - export LLVM_DIR_DECL_FOR_OSX="-DLLVM_DIR=\"/usr/local/opt/llvm/lib/cmake/llvm\""
 
 script:
   - mkdir build && cd build
-  - cmake ..
+  - cmake .. $LLVM_DIR_DECL_FOR_OSX
   - cmake --build . --config release
 
 env:
