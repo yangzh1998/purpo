@@ -7,13 +7,14 @@ jobs:
       addons:
         apt:
           packages: ["llvm"]
+      before_install:
+        - ls /usr/local/clang-7.0.0/lib
     - os: osx
       compiler: clang
       addons:
         homebrew:
           packages: ["llvm"]
       before_install:
-        - find /usr -name LLVMConfig.cmake
         - export LLVM_DIR="/usr/local/opt/llvm/lib/cmake/llvm"
 
 script:
