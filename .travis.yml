@@ -9,7 +9,6 @@ jobs:
           packages:
             - llvm
     - os: osx
-      osx_image: xcode11.1
       compiler: clang
       before_install:
         - ls /usr/local/opt
