@@ -7,18 +7,14 @@ jobs:
       addons:
         apt:
           packages: ["llvm"]
-      before_install:
-        - export LLVM_DIR="/usr/lib/llvm-6/cmake"
     - os: osx
       compiler: clang
       addons:
         homebrew:
           packages: ["llvm"]
       before_install:
-        - brew install llvm
-        - find /usr/local -name LLVMConfig.cmake
+        - find /usr -name LLVMConfig.cmake
         - export LLVM_DIR="/usr/local/opt/llvm/lib/cmake/llvm"
-
 
 script:
   - mkdir build && cd build
